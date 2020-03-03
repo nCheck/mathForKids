@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="vendor/starter-template.css" rel="stylesheet">
+
+
+    <script type="text/javascript" src="vendor/jquery-3.js"></script>
+
+  </head><link type="text/css" id="dark-mode" rel="stylesheet" href=""><style type="text/css" id="dark-mode-custom-style"></style>
+
+  <body style="background-image: url(images/kids.jpg); background-repeat: no-repeat; background-size: cover;">
+
+    <main role="main" class="container" >
+
+      <div class="starter-template pyro" >
+        <div class="row">
+
+          <div class="col-12" style="background-image: url(images/choose.png);">
+            <span style="font-size: 2.5cm; text-shadow: 4px 4px white; font-weight: 1000;"> SCORE : <span id="score"> 0 </span> </span>
+            
+          </div>
+
+          <div class="col-3" style="margin-top: 2.5%;">
+            <span style="font-size: 2cm; text-shadow: 4px 4px white; font-weight: 1000;" id="oneNum">  </span>
+            <br>
+            <img id="oneImg" height="250px" width="250px"/>
+          </div>
+
+          <div class="col-1" style="margin-top: 2.5%;">
+            <span style="font-size: 2cm; text-shadow: 4px 4px white; font-weight: 1000;" > + </span>
+          </div>
+
+          <div class="col-3" style="margin-top: 2.5%;">
+            <span style="font-size: 2cm; text-shadow: 4px 4px white; font-weight: 1000;" id="twoNum">  </span>
+            <br>
+            <img id="twoImg" height="250px" width="250px"/>
+          </div>
+
+          <div class="col-1" style="margin-top: 2.5%;">
+            <span style="font-size: 2cm; text-shadow: 4px 4px white; font-weight: 1000;"> = </span>
+          </div>
+
+          <div class="col-4" style="margin-top: 2.5%;">
+            <!-- <div style="font-size: 2cm; text-shadow: 4px 4px white;" >   </div> -->
+            <div>
+              <br>
+              <input type="text" name="ans" style="font-size: 1.25cm;" id="ansNum" maxlength="2" size="1" />
+              <button class="button" id="submit"> Submit </button>
+            </div>
+            <br>
+            <br>
+            <img id="ansImg"  height="270px" width="270px"/>
+          </div>
+
+
+
+        </div>
+      </div>
+
+    </main><!-- /.container -->
+
+
+
+
+    <script>
+
+
+        $(document).ready(function(){ 
+
+        var ans = 0
+        function update(){
+
+          var one = Math.ceil(Math.random()*4);
+          var two = Math.ceil(Math.random()*4);
+          ans = one + two;
+          console.log(one + two + ans); 
+          $('#oneNum').text(one);
+          $('#twoNum').text(two);
+          $('#ansNum').val("??");
+          $('#oneImg').attr('src','images/'+one.toString()+'.jpg');
+          $('#twoImg').attr('src','images/'+two.toString()+'.jpg');
+          $('#ansImg').attr('src','images/'+ans.toString()+'.jpg');
+
+          console.log("Dest "+ 'images/'+one.toString()+'.jpg')
+
+        }
+
+        $('#submit').click((data)=>{
+
+          var given = parseInt($('#ansNum').val());
+
+          if ( given == ans ){
+            alert("Correct Answer, Yooohoohoo");
+            var cur = parseInt($('#score').text()) + 1 ;
+            $('#score').text(cur);
+            update();
+          }else{
+            alert("Sorry, Wrong Answer");
+          }
+          
+
+        })
+
+        update();
+
+
+        });
+
+
+    </script>
+    <script type="text/javascript"  src="vendor/popper.js"></script>
+    <script type="text/javascript"  src="vendor/bootstrap.js"></script>
+  
+
+</body></html>
